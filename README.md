@@ -1,0 +1,20 @@
+Aplicação Prática dos Princípios S.O.L.I.D
+1. Single Responsibility Principle (SRP):
+O SRP destaca a importância de que uma classe deve ter apenas uma razão para mudar. Isso significa que uma classe deve ter uma única responsabilidade bem definida. Isso promove a coesão e a organização do código, tornando-o mais fácil de entender, testar e manter. Quando as classes são altamente coesas, é mais simples identificar e isolar problemas, tornando o processo de correção de bugs mais eficiente.
+Mudança: Ao refatorar o código, foram criadas classes de serviço específicas para cada operação, como UserCreateService, UserUpdateService, UserListService e UserDeleteService.
+Melhoria: Separando as responsabilidades, o código fica mais fácil de entender, testar e manter. Se houver mudanças na forma como os usuários são criados, somente o serviço de criação será afetado, sem impactos no controlador.
+2. Open/Closed Principle (OCP):
+O OCP preconiza que uma classe deve estar aberta para extensão, mas fechada para modificação. Isso significa que, ao adicionar novos recursos ou comportamentos, não se deve alterar o código existente. Isso é alcançado por meio da aplicação de técnicas como a herança, interfaces e padrões de projeto. O OCP torna o software mais flexível, permitindo a adição de funcionalidades sem perturbar o código já existente.
+Mudança: Ao mover a lógica de negócios para serviços, a extensão do comportamento desses serviços sem a necessidade de modificar o código existente no controlador é facilidade. Caso no futuro tenha necessidade de adicionar alguma nova funcionalidade, poderá ser feito dentro do UserCreateService sem modificar o controlador.
+Melhoria: O código está mais preparado para mudanças futuras, permitindo que novas funcionalidades sejam adicionadas sem quebrar o comportamento existente.
+3. Liskov Substitution Principle (LSP):
+O LSP estabelece que objetos de classes derivadas devem poder ser substituídos por objetos de suas classes base sem afetar a corretude do programa. Isso promove a consistência e a previsibilidade no código, permitindo a construção de hierarquias de classes que se comportam de maneira uniforme. O cumprimento do LSP evita comportamentos inesperados e erros sutis.
+Melhoria: Se tiver necessidade de criar variações de serviços, isso poderá ser feito de maneira independente e o sistema continuará funcionando corretamente.
+4. Interface Segregation Principle (ISP):
+O ISP afirma que uma classe não deve ser forçada a implementar métodos que não utiliza. Isso leva à criação de interfaces pequenas e coesas, o que permite que as classes implementem apenas o que é relevante para elas. Isso reduz o acoplamento entre classes e torna o código mais adaptável a mudanças.
+Melhoria: O código já está preparado para aplicar interfaces de forma mais simples e isolada, o que o torna flexível para diferentes implementações no futuro.
+5. Dependency Inversion Principle (DIP):
+O DIP enfatiza a importância de depender de abstrações em vez de implementações concretas. Isso promove o desacoplamento entre módulos do software, facilitando a substituição de componentes e a reutilização de código. O DIP também torna o código mais fácil de testar, uma vez que dependências podem ser injetadas e simuladas durante os testes.
+Mudança aplicada: Com arefatoração,  o UserController passa a depender de serviços (UserCreateService, UserUpdateService, etc) em vez de depender diretamente do modelo User. Essa mudança garante que o controlador dependa dos serviços, e não de implementações concretas. Isso facilita a substituição dos serviços por outros.
+Melhoria: Facilita os testes unitários, pois agora é possível simular os serviços nos testes do controlador, em vez de interagir diretamente com o modelo de dados. Além disso, torna o código mais modular, permitindo mudanças nas camadas de serviço sem afetar o controlador.
+Referência dos conceitos de SOLID utilizados na resposta: https://www.dio.me/articles/a-importancia-dos-principios-solid-na-engenharia-de-software
